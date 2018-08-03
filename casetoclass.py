@@ -60,8 +60,9 @@ def getMethodCode(name, content):
 	return None
 
 def delCaseCode(methodCode):
-	casePattern = re.compile(r'case\s\'[a-z]+\':')
+	casePattern = re.compile(r'\t*case\s\'[a-z]+\':[\w\W]*?\n')
 	caseList = casePattern.findall(methodCode);
+	#print(caseList)
 	if caseList:
 		for case in caseList:
 			methodCode = methodCode.replace(case, '')
